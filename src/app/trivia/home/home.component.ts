@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-home',
@@ -7,4 +10,16 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent {
 
+  trivia = {
+    categoria: '',
+    dificultad: '',
+    tipo: ''
+  }
+
+  iniciar(){
+    this.router.navigate(['trivia']);
+  }
+
+  constructor(private apiService: ApiService,
+              private router: Router) {}
 }

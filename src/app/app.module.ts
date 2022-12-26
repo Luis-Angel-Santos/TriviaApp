@@ -7,6 +7,8 @@ import { NgModule } from '@angular/core';
 import { TriviaComponent } from './trivia/trivia/trivia.component';
 import { HomeComponent } from './trivia/home/home.component';
 import { AppComponent } from './app.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,9 @@ import { AppComponent } from './app.component';
     AppRoutingModule,
     MaterialModule,
     BrowserModule,
+    ReactiveFormsModule,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
