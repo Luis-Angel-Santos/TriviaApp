@@ -12,8 +12,9 @@ export class ApiService {
 
   urlBase: string = 'https://opentdb.com/api.php?amount=20';
 
-  getQuestions():Observable<Trivia>{
-    return this.http.get<Trivia>(`${this.urlBase}`);
+
+  getQuestions(category: string, type: string, difficult: string):Observable<Trivia>{
+    return this.http.get<Trivia>(`${this.urlBase}&category=${category}&difficult=${difficult}&type=${type}`);
   }
 
 }

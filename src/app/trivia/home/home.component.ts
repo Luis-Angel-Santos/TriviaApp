@@ -17,7 +17,8 @@ export class HomeComponent {
   }
 
   iniciar(){
-    this.router.navigate(['trivia']);
+    console.log(this.trivia); 
+    this.router.navigate(['trivia', this.trivia.categoria, this.trivia.tipo, this.trivia.dificultad]);
   }
 
   constructor(private apiService: ApiService,
