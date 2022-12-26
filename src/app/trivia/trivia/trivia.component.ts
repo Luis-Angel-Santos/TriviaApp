@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Questions } from '../interfaces/questions.interface';
 import { ApiService } from '../services/api.service';
 
 @Component({
@@ -12,6 +13,27 @@ export class TriviaComponent implements OnInit{
   categoria: string = '';
   tipo: string = '';
   dificultad: string = '';
+  preguntas!: Questions[];
+  p: number = 1;
+  buenas: number = 0;
+  malas: number = 1;
+  colorBien: string = '';
+  colorMal: string = '';
+
+  pageChangeEvent(event: number){
+    this.p = event;
+  }
+
+  buena(){
+    this.buenas++;
+    this.pageChangeEvent(this.p + 1);
+  }
+
+  mala(){
+    this.malas++;
+    this.pageChangeEvent(this.p + 1);
+  }
+
 
   constructor(private activatedRoute: ActivatedRoute,
               private apiService: ApiService){}
@@ -23,7 +45,7 @@ export class TriviaComponent implements OnInit{
     
     this.apiService.getQuestions(this.categoria, this.tipo, this.dificultad)
       .subscribe(trivia => {
-        console.log(trivia.results);
+        this.preguntas = trivia.results;
       })
     
   }
