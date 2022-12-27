@@ -22,23 +22,28 @@ export class TriviaComponent implements OnInit{
   malas: number = 0;
   colorBien: string = '';
   colorMal: string = '';
-  durationInSeconds = 2;
+  tiempo: number = 60;
 
   pageChangeEvent(event: number){
     if(this.p != 20){
       this.p = event;
     }else{
-      this._snackBar.dismiss();
+      this.tiempoAcabado();
+    }
+  }
+
+  tiempoAcabado(){
+    this._snackBar.dismiss();
       Swal.fire({
         title: 'Resultados Finales!',
         text: `Estos son tus resultados: de 20 preguntas, tú tienes ${this.buenas} aciertos y ${this.malas} incorrectas`,
         icon: 'info',
+        backdrop: false,
         confirmButtonText: 'Volver a Jugar',
         confirmButtonColor: 'green'
       }).then(resp => {
         if (resp.isConfirmed ) this.router.navigate(['/trivia']); 
       })
-    }
   }
 
   buena(){
@@ -57,7 +62,6 @@ export class TriviaComponent implements OnInit{
     this._snackBar.open(message, action);
   }
 
-
   constructor(private activatedRoute: ActivatedRoute,
               private apiService: ApiService,
               private _snackBar: MatSnackBar,
@@ -71,8 +75,15 @@ export class TriviaComponent implements OnInit{
     this.apiService.getQuestions(this.categoria, this.tipo, this.dificultad)
       .subscribe(trivia => {
         this.preguntas = trivia.results;
-      })
-    
+    });
+    var id = setInterval(() => {
+      if(this.tiempo <= 0){
+        this.tiempoAcabado();
+        clearInterval(id);
+      }else{
+        this.tiempo--;
+      }
+    }, 1000);
   }
 
 }

@@ -12,3 +12,16 @@ mat-card{
 img{
     max-width: 100px;
 }
+
+.spinner{
+    margin-top: 150px;
+}
+
+.elementos{
+    float: right;  
+    padding: 10px;
+    
+}
+.tiempoT{
+    font-size: 25px;
+}
