@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Questions, Trivia } from '../interfaces/questions.interface';
+import { Trivia } from '../interfaces/questions.interface';
 
 @Injectable({
   providedIn: 'root'

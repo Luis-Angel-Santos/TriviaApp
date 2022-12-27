@@ -2,6 +2,9 @@
     padding-top: 50px;
     max-width: 700px;
 }
+*{
+    font-family: 'Balsamiq Sans', cursive;
+}
 
 mat-card{
     max-width: 500px;
@@ -24,4 +27,13 @@ img{
 }
 .tiempoT{
     font-size: 25px;
+}
+
+
+h1{
+    font-family: 'Balsamiq Sans', cursive;
+}
+
+h2{
+    font-family: 'Balsamiq Sans', cursive;
 }
