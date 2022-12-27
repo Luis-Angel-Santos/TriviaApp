@@ -1,14 +1,16 @@
-<div class="container mx-auto">
-    <h1>Vamos!! Contesta todas las preguntas antes de que acabe el tiempo!</h1>
-    <mat-card *ngFor="let pregunta of preguntas | paginate: { itemsPerPage: 1, currentPage: p }">
-        <mat-card-content>
-            <h2>{{pregunta.question}}</h2>
-                <div class="list-group">
-                    <button type="button" [color]="colorMal" mat-button (click)="mala()" *ngFor="let respuestas of pregunta.incorrect_answers">{{respuestas}}</button>
-                    <button type="button" [color]="colorBien" mat-button (click)="buena()">{{pregunta.correct_answer}}</button>
-                  </div>
-        </mat-card-content>
-    </mat-card>
-    <br>
-    <pagination-controls  hidden class="text-center" (pageChange)="pageChangeEvent($event)" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
-</div>
+
+    <div class="container mx-auto text-center">
+        <h1>Vamos!! Contesta todas las preguntas antes de que acabe el tiempo!</h1>
+        <mat-card *ngFor="let pregunta of preguntas | paginate: { itemsPerPage: 1, currentPage: p }">
+            <img class="mx-auto" src="../../../assets/img/logo.png">
+            <mat-card-content>
+                <h2>{{pregunta.question | trivia }}</h2>
+                    <div class="list-group">
+                        <button type="button" [color]="colorMal" mat-button (click)="mala()" *ngFor="let respuestas of pregunta.incorrect_answers">{{respuestas}}</button>
+                        <button type="button" [color]="colorBien" mat-button (click)="buena()">{{pregunta.correct_answer}}</button>
+                      </div>
+            </mat-card-content>
+        </mat-card>
+        <br>
+        <pagination-controls  hidden class="text-center" (pageChange)="pageChangeEvent($event)" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
+    </div>
