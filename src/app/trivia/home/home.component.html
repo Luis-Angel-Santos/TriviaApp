@@ -1,52 +1,44 @@
 <div class="home animate__animated animate__fadeIn">
-    <div class="container text-center">
-        <h1>Trivia App</h1>
-        <hr>
-        <p>Disfruta de esta aplicación de preguntas para ponerte a prueba en diferentes temas y dificultades. Contaras con 60 segundos para contestar 20 preguntas del tema y dificultad que selecciones</p>
-        <hr>
-        <h3>Selecciona los temas, la dificultad y el tipo de preguntas con las que quieres empezar!</h3>
-        <div class="trivia container">
-            <mat-tab-group>
-                <mat-tab label="Categoria">
-                    <div class="container text-center">
-                        <h3>Selecciona la categoria de las preguntas</h3>
-                        <hr>
-                        <mat-chip-listbox [(ngModel)]="trivia.categoria" aria-label="Categoria">
-                            <mat-chip-option value="0">Cualquiera</mat-chip-option>    
-                            <mat-chip-option value="15">Videojuegos</mat-chip-option>    
-                            <mat-chip-option value="11">Peliculas</mat-chip-option>    
-                            <mat-chip-option value="21">Deportes</mat-chip-option>    
-                            <mat-chip-option value="27">Animales</mat-chip-option>  
-                            <mat-chip-option value="29">Comics</mat-chip-option>   
-                            <mat-chip-option value="14">Televisión</mat-chip-option>    
-                            <mat-chip-option value="12">Música</mat-chip-option>    
-                            <mat-chip-option value="32">Caricaturas - Animaciones</mat-chip-option>    
-                        </mat-chip-listbox>
-                    </div>
-                </mat-tab>
-                <mat-tab label="Dificultad y Tipo de preguntas"> 
-                    <div class="container">
-                        <p>Dificultad de la trivia: </p>
-                        <mat-radio-group [(ngModel)]="trivia.dificultad" aria-label="Selecciona la dificultad">
-                            <mat-radio-button color="primary" value="easy">Facil</mat-radio-button>
-                            <mat-radio-button color="primary" value="medium">Media</mat-radio-button>
-                            <mat-radio-button color="primary" value="hard">Dificil</mat-radio-button>
-                        </mat-radio-group>
-                        <hr>
-                        <p>Tipo de preguntas: </p>
-                        <mat-radio-group [(ngModel)]="trivia.tipo" aria-label="Selecciona el tipo">
-                            <mat-radio-button color="primary" value="boolean">Verdadero/Falso</mat-radio-button>
-                            <mat-radio-button color="primary" value="multiple">Opción Multiple</mat-radio-button>
-                        </mat-radio-group>
-                    </div>
-                </mat-tab>
-            </mat-tab-group>
-            <br><hr>
-            <button mat-fab extended color="primary" (click)="iniciar()">
-                Comenzar
-                <mat-icon>play_arrow</mat-icon>
-            </button>
-        </div>
+  <div class="container text-center">
+    <h1>Trivia App</h1>
+    <hr>
+    <p>Disfruta de esta aplicación de preguntas para ponerte a prueba en diferentes temas y dificultades. Contaras con 60 segundos para contestar 20 preguntas del tema y dificultad que selecciones</p>
+    <hr>
+    <h3>Selecciona los temas, la dificultad y el tipo de preguntas con las que quieres empezar!</h3>
+    <div class="trivia container">
+      <mat-tab-group>
+        <mat-tab label="Categoria">
+          <div class="container text-center">
+            <h3>Selecciona la categoria de las preguntas</h3>
+            <hr>
+            <mat-chip-listbox [(ngModel)]="trivia.categoria" aria-label="Categoria">
+              <ng-container *ngFor="let categoria of categorias">
+                <mat-chip-option [value]="categoria.value">{{categoria.label}}</mat-chip-option>
+              </ng-container>
+            </mat-chip-listbox>
+          </div>
+        </mat-tab>
+        <mat-tab label="Dificultad y Tipo de preguntas">
+          <div class="container">
+            <p>Dificultad de la trivia: </p>
+            <mat-radio-group [(ngModel)]="trivia.dificultad" aria-label="Selecciona la dificultad">
+              <mat-radio-button color="primary" value="easy">Facil</mat-radio-button>
+              <mat-radio-button color="primary" value="medium">Media</mat-radio-button>
+              <mat-radio-button color="primary" value="hard">Dificil</mat-radio-button>
+            </mat-radio-group>
+            <hr>
+            <p>Tipo de preguntas: </p>
+            <mat-radio-group [(ngModel)]="trivia.tipo" aria-label="Selecciona el tipo">
+              <mat-radio-button color="primary" value="boolean">Verdadero/Falso</mat-radio-button>
+              <mat-radio-button color="primary" value="multiple">Opción Multiple</mat-radio-button>
+            </mat-radio-group>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+      <br><hr>
+      <button mat-fab extended color="primary" (click)="iniciar()">Comenzar
+        <mat-icon>play_arrow</mat-icon>
+      </button>
     </div>
+  </div>
 </div>
-

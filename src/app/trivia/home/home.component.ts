@@ -10,6 +10,18 @@ import { ApiService } from '../services/api.service';
 })
 export class HomeComponent {
 
+  categorias = [
+    { value: "0", label: "Cualquiera" },
+    { value: "15", label: "Videojuegos" },
+    { value: "11", label: "Peliculas" },
+    { value: "21", label: "Deportes" },
+    { value: "27", label: "Animales" },
+    { value: "29", label: "Comics" },
+    { value: "14", label: "Televisión" },
+    { value: "12", label: "Música" },
+    { value: "32", label: "Caricaturas - Animaciones" }
+  ]
+
   trivia = {
     categoria: '',
     dificultad: '',
@@ -17,7 +29,7 @@ export class HomeComponent {
   }
 
   iniciar(){
-    console.log(this.trivia); 
+    console.log(this.trivia);
     this.router.navigate(['trivia', this.trivia.categoria, this.trivia.tipo, this.trivia.dificultad]);
   }
 

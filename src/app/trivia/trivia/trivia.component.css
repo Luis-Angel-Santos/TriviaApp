@@ -21,9 +21,9 @@ img{
 }
 
 .elementos{
-    float: right;  
+    float: right;
     padding: 10px;
-    
+    color: white;
 }
 .tiempoT{
     font-size: 25px;

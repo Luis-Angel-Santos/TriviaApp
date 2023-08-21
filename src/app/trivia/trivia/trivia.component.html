@@ -1,22 +1,26 @@
 <mat-spinner class="mx-auto spinner" *ngIf="!preguntas"></mat-spinner>
-    <div class="tiempo" *ngIf="preguntas">
-        <div class="elementos text-center">
-            <p class="tiempoT">Tiempo: {{tiempo}} ⏰</p>
-        </div>
-    </div>
+<div class="tiempo" *ngIf="preguntas">
+  <div class="elementos text-center">
+    <mat-card>
+      <p class="tiempoT">Tiempo: {{tiempo}} ⏰</p>
+    </mat-card>
+  </div>
+</div>
 <div *ngIf="preguntas" class="container mx-auto text-center animate__animated animate__fadeIn">
-        <h1>Vamos!! Contesta todas las preguntas antes de que acabe el tiempo!</h1>
-        <mat-card class="animate__animated animate__fadeIn" *ngFor="let pregunta of preguntas | paginate: { itemsPerPage: 1, currentPage: p }">
-            <img class="mx-auto" src="../../../assets/img/logo.png">
-            <mat-card-content>
-                <pre>Pregunta: {{p}}/20</pre>
-                <h2>{{pregunta.question | trivia }}</h2>
-                    <div class="list-group">
-                        <button type="button" [color]="colorMal" mat-button (click)="mala()" *ngFor="let respuestas of pregunta.incorrect_answers">{{respuestas}}</button>
-                        <button type="button" [color]="colorBien" mat-button (click)="buena()">{{pregunta.correct_answer}}</button>
-                      </div>
-            </mat-card-content>
-        </mat-card>
-        <br>
-        <pagination-controls  hidden class="text-center" (pageChange)="pageChangeEvent($event)" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
-    </div>
+  <h1>Vamos!! Contesta todas las preguntas antes de que acabe el tiempo!</h1>
+  <mat-card class="animate__animated animate__fadeIn"
+    *ngFor="let pregunta of preguntas | paginate: { itemsPerPage: 1, currentPage: p }">
+    <img class="mx-auto" src="../../../assets/img/logo.png">
+    <mat-card-content>
+      <pre>Pregunta: {{p}}/20</pre>
+      <h2 [innerHTML]="pregunta.question"></h2>
+      <div class="list-group">
+        <button type="button" mat-button *ngFor="let respuesta of pregunta.all_answers"
+          (click)="responder(pregunta, respuesta)"><p [innerHTML]="respuesta"></p></button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <br>
+  <pagination-controls hidden class="text-center" (pageChange)="pageChangeEvent($event)" previousLabel="Anterior"
+    nextLabel="Siguiente"></pagination-controls>
+</div>
