@@ -127,7 +127,7 @@ export class TriviaComponent implements OnInit{
       }
     });
     var id = setInterval(() => {
-      if(this.tiempo <= 0 || this.p == 20){
+      if(this.tiempo <= 0 || this.p > 20){
         this.tiempoAcabado();
         clearInterval(id);
       }else{
